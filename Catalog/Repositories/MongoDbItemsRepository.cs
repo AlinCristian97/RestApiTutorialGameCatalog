@@ -47,7 +47,8 @@ namespace Catalog.Repositories
 
         public void UpdateItem(Item item)
         {
-            throw new NotImplementedException();
+            var filter = _filterBuilder.Eq(existingItem => existingItem.Id, item.Id);
+            _itemsCollection.ReplaceOne(filter, item);
         }
     }
 }
