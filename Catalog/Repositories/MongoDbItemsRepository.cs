@@ -31,7 +31,8 @@ namespace Catalog.Repositories
 
         public void DeleteItem(Guid id)
         {
-            throw new NotImplementedException();
+            var filter = _filterBuilder.Eq(item => item.Id, id);
+            _itemsCollection.DeleteOne(filter);
         }
 
         public Item GetItem(Guid id)
